@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    @keyframes ghafase-pulse { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.08); opacity: 0.75; } }
+    @keyframes ghafase-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes ghafase-flame-a { 0%,100% { transform: scaleY(1) scaleX(1) rotate(-3deg); opacity: 0.95; } 50% { transform: scaleY(1.22) scaleX(0.9) rotate(2deg); opacity: 1; } }
+    @keyframes ghafase-flame-b { 0%,100% { transform: scaleY(1.05) scaleX(1) rotate(4deg); opacity: 0.9; } 45% { transform: scaleY(0.85) scaleX(1.1) rotate(-3deg); opacity: 1; } 100% { transform: scaleY(1.05) scaleX(1) rotate(4deg); opacity: 0.9; } }
+    @keyframes ghafase-flame-c { 0%,100% { transform: scaleY(1) rotate(-6deg); opacity: 0.8; } 55% { transform: scaleY(1.18) rotate(5deg); opacity: 1; } }
+    @keyframes ghafase-steam-rise { 0% { transform: translateY(0) rotate(20deg) scale(1); opacity: 0.85; } 100% { transform: translateY(-10px) rotate(20deg) scale(1.3); opacity: 0; } }
+    @keyframes ghafase-steam-rise2 { 0% { transform: translateY(0) rotate(-16deg) scale(1); opacity: 0.6; } 100% { transform: translateY(-9px) rotate(-16deg) scale(1.25); opacity: 0; } }
+  </style>
+</helmet>
+<div dir="rtl" lang="fa" style="width:100%;min-height:100%;background:#EAE0C8;display:flex;align-items:center;justify-content:center;padding:40px 20px;box-sizing:border-box;font-family:Vazirmatn, Tahoma, sans-serif;">
+  <x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" width="{{ 412 }}" height="{{ 892 }}" hint-size="412,892">
+
+    <div style="position:relative;height:100%;width:100%;overflow:hidden;background:#F5EEDD;display:flex;flex-direction:column;box-sizing:border-box;">
+
+      <!-- ===================== LOGIN ===================== -->
+      <sc-if value="{{ isLogin }}" hint-placeholder-val="{{ true }}">
+        <div style="height:100%;display:flex;flex-direction:column;padding:0 28px;box-sizing:border-box;overflow:auto;">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;">
+            <div style="width:104px;height:104px;position:relative;border-radius:50%;background:linear-gradient(155deg, #E6B421 0%, #D9A404 42%, #B33A1E 100%);box-shadow:0 16px 30px rgba(179,58,30,0.38), inset 0 2px 3px rgba(255,255,255,0.35), inset 0 -10px 18px rgba(0,0,0,0.14);">
+              <!-- gloss highlight -->
+              <div style="position:absolute;left:14px;top:10px;width:44px;height:26px;border-radius:50%;background:rgba(255,255,255,0.28);filter:blur(1px);"></div>
+              <!-- steam wisps -->
+              <div style="position:absolute;left:42px;top:16px;width:8px;height:19px;border-radius:50% 50% 50% 0;background:#FFFCF4;transform-origin:bottom center;animation:ghafase-steam-rise 2.2s ease-in-out infinite;"></div>
+              <div style="position:absolute;left:58px;top:20px;width:7px;height:15px;border-radius:50% 50% 50% 0;background:#FFFCF4;transform-origin:bottom center;animation:ghafase-steam-rise2 2.4s ease-in-out infinite 0.6s;"></div>
+              <!-- lid knob -->
+              <div style="position:absolute;left:48px;top:42px;width:8px;height:8px;border-radius:50%;background:#3C4C1B;"></div>
+              <!-- lid -->
+              <div style="position:absolute;left:24px;top:48px;width:56px;height:13px;border-radius:50%;background:#4A5D23;box-shadow:0 3px 6px rgba(0,0,0,0.18);"></div>
+              <!-- pot body -->
+              <div style="position:absolute;left:22px;top:55px;width:60px;height:38px;border-radius:6px 6px 18px 18px;background:#FFFCF4;box-shadow:0 4px 10px rgba(0,0,0,0.12), inset 0 -8px 12px rgba(217,164,4,0.18);"></div>
+              <!-- handles -->
+              <div style="position:absolute;left:12px;top:62px;width:11px;height:15px;border-radius:5px;background:#FFFCF4;"></div>
+              <div style="position:absolute;left:81px;top:62px;width:11px;height:15px;border-radius:5px;background:#FFFCF4;"></div>
+              <!-- flame -->
+              <div style="position:absolute;left:36px;top:96px;width:11px;height:16px;border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;background:linear-gradient(180deg,#F7D24A 0%,#D9A404 55%,#B33A1E 100%);transform-origin:bottom center;animation:ghafase-flame-a 0.9s ease-in-out infinite;"></div>
+              <div style="position:absolute;left:48px;top:92px;width:14px;height:22px;border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;background:linear-gradient(180deg,#FDE38A 0%,#E6B421 40%,#B33A1E 100%);transform-origin:bottom center;animation:ghafase-flame-b 0.85s ease-in-out infinite 0.1s;"></div>
+              <div style="position:absolute;left:62px;top:97px;width:10px;height:15px;border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;background:linear-gradient(180deg,#F7D24A 0%,#D9A404 55%,#B33A1E 100%);transform-origin:bottom center;animation:ghafase-flame-c 1s ease-in-out infinite 0.25s;"></div>
+            </div>
+            <div style="font-size:34px;font-weight:800;color:#2B2118;">آشپزیار</div>
+            <div style="font-size:15px;color:#7A6B52;text-align:center;line-height:1.9;">کمترین هزینه، بدون دورریز مواد،<br/>غذای جدید از همون چیزایی که داری</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px;padding-bottom:34px;">
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <label style="font-size:13px;color:#7A6B52;">ایمیل یا شماره موبایل</label>
+              <input type="text" placeholder="مثلا 0912xxxxxxx" dir="rtl" style="height:52px;border-radius:14px;border:1.5px solid #E4D8BC;background:#FFFCF4;padding:0 16px;font-size:15px;color:#2B2118;font-family:Vazirmatn, Tahoma, sans-serif;outline:none;box-sizing:border-box;"/>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <label style="font-size:13px;color:#7A6B52;">رمز عبور</label>
+              <input type="password" placeholder="••••••••" dir="rtl" style="height:52px;border-radius:14px;border:1.5px solid #E4D8BC;background:#FFFCF4;padding:0 16px;font-size:15px;color:#2B2118;font-family:Vazirmatn, Tahoma, sans-serif;outline:none;box-sizing:border-box;"/>
+            </div>
+            <div onClick="{{ goLogin }}" style="margin-top:6px;height:54px;border-radius:16px;background:#D9A404;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#2B2118;cursor:pointer;box-shadow:0 10px 24px rgba(217,164,4,0.35);">ورود</div>
+            <div style="text-align:center;font-size:13.5px;color:#7A6B52;margin-top:4px;">حساب نداری؟ <span style="color:#B33A1E;font-weight:600;">ثبت‌نام کن</span></div>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ===================== PANTRY ===================== -->
+      <sc-if value="{{ isPantry }}" hint-placeholder-val="{{ false }}">
+        <div style="height:100%;display:flex;flex-direction:column;box-sizing:border-box;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 20px 4px;">
+            <div style="font-size:22px;font-weight:800;color:#2B2118;">قفسه من</div>
+            <div onClick="{{ toggleDemoMenu }}" style="width:36px;height:36px;border-radius:12px;background:#FFFFFF;border:1px solid #E4D8BC;display:flex;align-items:center;justify-content:center;font-size:18px;color:#7A6B52;cursor:pointer;">⋮</div>
+          </div>
+
+          <div style="padding:8px 20px 14px;">
+            <div style="display:flex;gap:8px;justify-content:center;padding:14px 10px;background:#FFFCF4;border-radius:18px;border:1px solid #E4D8BC;">
+              <sc-for list="{{ jarSlots }}" as="jar" hint-placeholder-count="7">
+                <div style="width:26px;height:38px;border-radius:7px 7px 9px 9px;box-sizing:border-box;position:relative;{{ jar.filled ? '' : '' }}">
+                  <div style="position:absolute;inset:0;border-radius:7px 7px 9px 9px;border:2px solid #E4D8BC;background:#F5EEDD;"></div>
+                  <sc-if value="{{ jar.filled }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;left:2px;right:2px;bottom:2px;top:14px;border-radius:5px 5px 7px 7px;background:{{ jar.color }};"></div>
+                  </sc-if>
+                  <div style="position:absolute;left:5px;right:5px;top:-5px;height:6px;border-radius:3px;background:#C9BB98;"></div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="text-align:center;font-size:12px;color:#9A8B6D;margin-top:8px;">هر ماده که اضافه می‌کنی، یکی از این شیشه‌ها پر می‌شه · بعداً جای این شیشه‌ها عکس واقعیِ قفسه‌ات میاد</div>
+          </div>
+
+          <div style="flex:1;overflow:auto;padding:0 20px;">
+            <sc-if value="{{ pantryEmpty }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:30px 10px 10px;text-align:center;">
+                <div style="width:64px;height:64px;border-radius:20px;background:#EFE3CE;display:flex;align-items:center;justify-content:center;font-size:28px;">🥫</div>
+                <div style="font-size:16px;font-weight:700;color:#2B2118;">هنوز چیزی توی قفسه‌ت نیست</div>
+                <div style="font-size:13.5px;color:#7A6B52;line-height:1.8;max-width:240px;">هر چی توی خونه داری رو اضافه کن، بعد بهت می‌گیم با همونا چی می‌تونی بپزی</div>
+                <div onClick="{{ openAddSheet }}" style="margin-top:6px;height:48px;padding:0 22px;border-radius:14px;background:#4A5D23;color:#FFFCF4;font-size:14.5px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer;">+ افزودن اولین ماده</div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ !pantryEmpty }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;flex-direction:column;gap:8px;padding:6px 0 16px;">
+                <sc-for list="{{ pantryItems }}" as="item" hint-placeholder-count="4">
+                  <div style="display:flex;align-items:center;gap:12px;background:#FFFCF4;border:1px solid #E4D8BC;border-radius:14px;padding:12px 14px;">
+                    <div style="width:34px;height:34px;border-radius:10px;background:#E1E8CF;color:#4A5D23;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">{{ item.name }}</div>
+                    <div style="flex:1;font-size:15px;color:#2B2118;">{{ item.name }}</div>
+                    <div onClick="{{ item.remove }}" style="width:28px;height:28px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#B33A1E;font-size:16px;cursor:pointer;">✕</div>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="padding:14px 20px 22px;display:flex;flex-direction:column;gap:10px;border-top:1px solid #E4D8BC;background:#F5EEDD;">
+            <div onClick="{{ openAddSheet }}" style="height:50px;border-radius:15px;border:1.5px dashed #C9BB98;color:#7A6B52;font-size:14.5px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;">+ افزودن ماده جدید</div>
+            <div onClick="{{ findFood }}" style="height:54px;border-radius:16px;background:#D9A404;color:#2B2118;font-size:16px;font-weight:800;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 10px 22px rgba(217,164,4,0.32);">پیدا کن غذا</div>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ===================== ADD ITEM SHEET (overlay) ===================== -->
+      <sc-if value="{{ addSheetOpen }}" hint-placeholder-val="{{ false }}">
+        <div onClick="{{ closeAddSheet }}" style="position:absolute;inset:0;background:rgba(30,22,10,0.42);z-index:30;"></div>
+        <div style="position:absolute;left:0;right:0;bottom:0;z-index:31;background:#FFFCF4;border-radius:24px 24px 0 0;padding:20px 20px 26px;box-shadow:0 -12px 30px rgba(0,0,0,0.18);box-sizing:border-box;">
+          <div style="width:40px;height:5px;border-radius:3px;background:#E4D8BC;margin:0 auto 16px;"></div>
+          <div style="font-size:17px;font-weight:800;color:#2B2118;margin-bottom:12px;">چی توی خونه داری؟</div>
+          <input type="text" value="{{ query }}" onChange="{{ onQueryChange }}" placeholder="مثلا: پیاز، سیب‌زمینی..." dir="rtl" autofocus="{{ true }}" style="width:100%;height:50px;border-radius:14px;border:1.5px solid #E4D8BC;background:#F5EEDD;padding:0 16px;font-size:15px;color:#2B2118;font-family:Vazirmatn, Tahoma, sans-serif;outline:none;box-sizing:border-box;"/>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;max-height:190px;overflow:auto;">
+            <sc-for list="{{ filteredSuggestions }}" as="sug" hint-placeholder-count="6">
+              <div onClick="{{ sug.add }}" style="padding:9px 14px;border-radius:100px;background:#EFE3CE;color:#5B4E38;font-size:13.5px;font-weight:600;cursor:pointer;">{{ sug.name }}</div>
+            </sc-for>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:18px;">
+            <div onClick="{{ closeAddSheet }}" style="flex:1;height:50px;border-radius:14px;border:1.5px solid #E4D8BC;color:#7A6B52;font-size:14.5px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer;">بستن</div>
+            <div onClick="{{ addItemFromInput }}" style="flex:1.4;height:50px;border-radius:14px;background:#4A5D23;color:#FFFCF4;font-size:14.5px;font-weight:800;display:flex;align-items:center;justify-content:center;cursor:pointer;">اضافه شد!</div>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ===================== DEMO MENU (overlay) ===================== -->
+      <sc-if value="{{ demoMenuOpen }}" hint-placeholder-val="{{ false }}">
+        <div onClick="{{ toggleDemoMenu }}" style="position:absolute;inset:0;background:rgba(30,22,10,0.35);z-index:40;"></div>
+        <div style="position:absolute;top:66px;left:20px;width:238px;background:#FFFCF4;border-radius:16px;border:1px solid #E4D8BC;box-shadow:0 16px 34px rgba(0,0,0,0.2);z-index:41;overflow:hidden;">
+          <div style="padding:12px 14px 8px;font-size:12px;color:#9A8B6D;">پیش‌نمایش حالت‌ها (دمو)</div>
+          <div onClick="{{ previewLoading }}" style="padding:12px 14px;font-size:14px;color:#2B2118;cursor:pointer;border-top:1px solid #F0E7D3;">⏳ لودینگ هوش مصنوعی</div>
+          <div onClick="{{ previewErrorEmpty }}" style="padding:12px 14px;font-size:14px;color:#2B2118;cursor:pointer;border-top:1px solid #F0E7D3;">🗄️ خطا: قفسه خالی</div>
+          <div onClick="{{ previewErrorService }}" style="padding:12px 14px;font-size:14px;color:#2B2118;cursor:pointer;border-top:1px solid #F0E7D3;">⚠️ خطا: مشکل سرویس</div>
+          <div onClick="{{ addSampleItems }}" style="padding:12px 14px;font-size:14px;color:#4A5D23;font-weight:700;cursor:pointer;border-top:1px solid #F0E7D3;">+ پر کردن قفسه با نمونه</div>
+        </div>
+      </sc-if>
+
+      <!-- ===================== BUDGET ===================== -->
+      <sc-if value="{{ isBudget }}" hint-placeholder-val="{{ false }}">
+        <div style="height:100%;display:flex;flex-direction:column;box-sizing:border-box;">
+          <div style="display:flex;align-items:center;gap:12px;padding:18px 20px 6px;">
+            <div onClick="{{ back }}" style="width:36px;height:36px;border-radius:12px;background:#FFFFFF;border:1px solid #E4D8BC;display:flex;align-items:center;justify-content:center;font-size:18px;color:#2B2118;cursor:pointer;">→</div>
+            <div style="font-size:19px;font-weight:800;color:#2B2118;">چقدر بودجه‌ی اضافه داری؟</div>
+          </div>
+          <div style="padding:6px 20px 0;font-size:13.5px;color:#7A6B52;">اگه یکی دو ماده کم داشته باشی، چقدر حاضری خرج کنی؟</div>
+          <div style="flex:1;overflow:auto;padding:16px 20px;display:flex;flex-direction:column;gap:12px;">
+            <sc-for list="{{ budgets }}" as="b" hint-placeholder-count="3">
+              <div onClick="{{ b.select }}" style="padding:16px;border-radius:16px;background:#FFFCF4;box-sizing:border-box;cursor:pointer;{{ b.selected ? 'border:2px solid #D9A404;box-shadow:0 6px 18px rgba(217,164,4,0.22);' : 'border:2px solid #E4D8BC;' }}">
+                <div style="display:flex;align-items:center;justify-content:space-between;">
+                  <div style="font-size:16px;font-weight:800;color:#2B2118;">{{ b.label }}</div>
+                  <sc-if value="{{ b.selected }}" hint-placeholder-val="{{ false }}">
+                    <div style="width:22px;height:22px;border-radius:100px;background:#D9A404;color:#2B2118;font-size:13px;display:flex;align-items:center;justify-content:center;">✓</div>
+                  </sc-if>
+                </div>
+                <div style="font-size:13px;color:#7A6B52;margin-top:6px;line-height:1.7;">{{ b.desc }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="padding:14px 20px 24px;border-top:1px solid #E4D8BC;">
+            <div onClick="{{ continueToLoading }}" style="height:54px;border-radius:16px;font-size:16px;font-weight:800;display:flex;align-items:center;justify-content:center;cursor:pointer;{{ continueEnabled ? 'background:#D9A404;color:#2B2118;box-shadow:0 10px 22px rgba(217,164,4,0.32);' : 'background:#EFE3CE;color:#B3A47F;' }}">ادامه</div>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ===================== LOADING ===================== -->
+      <sc-if value="{{ isLoading }}" hint-placeholder-val="{{ false }}">
+        <div style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:0 30px;box-sizing:border-box;">
+          <div style="display:flex;gap:8px;">
+            <div style="width:20px;height:30px;border-radius:5px;background:#D9A404;animation:ghafase-pulse 1.1s ease-in-out infinite;"></div>
+            <div style="width:20px;height:30px;border-radius:5px;background:#B33A1E;animation:ghafase-pulse 1.1s ease-in-out infinite 0.15s;"></div>
+            <div style="width:20px;height:30px;border-radius:5px;background:#4A5D23;animation:ghafase-pulse 1.1s ease-in-out infinite 0.3s;"></div>
+          </div>
+          <div style="font-size:16.5px;font-weight:800;color:#2B2118;text-align:center;">داره توی قفسه‌ت دنبال ایده می‌گرده...</div>
+          <div style="font-size:13.5px;color:#7A6B52;text-align:center;line-height:1.8;">چند ثانیه طول می‌کشه، داریم بهترین ترکیب رو پیدا می‌کنیم</div>
+        </div>
+      </sc-if>
+
+      <!-- ===================== RESULTS ===================== -->
+      <sc-if value="{{ isResults }}" hint-placeholder-val="{{ false }}">
+        <div style="height:100%;display:flex;flex-direction:column;box-sizing:border-box;">
+          <div style="display:flex;align-items:center;gap:12px;padding:18px 20px 4px;">
+            <div onClick="{{ back }}" style="width:36px;height:36px;border-radius:12px;background:#FFFFFF;border:1px solid #E4D8BC;display:flex;align-items:center;justify-content:center;font-size:18px;color:#2B2118;cursor:pointer;">→</div>
+            <div style="font-size:19px;font-weight:800;color:#2B2118;">اینا رو می‌تونی بپزی</div>
+          </div>
+          <div style="padding:4px 20px 10px;font-size:13px;color:#7A6B52;">بر اساس چیزایی که توی قفسه‌ته</div>
+          <div style="flex:1;overflow:auto;padding:6px 20px 20px;display:flex;flex-direction:column;gap:14px;">
+            <sc-for list="{{ recipes }}" as="r" hint-placeholder-count="3">
+              <div onClick="{{ r.open }}" style="background:#FFFCF4;border:1px solid #E4D8BC;border-radius:18px;padding:16px;cursor:pointer;">
+                <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;">
+                  <div style="font-size:16.5px;font-weight:800;color:#2B2118;">{{ r.title }}</div>
+                  <sc-if value="{{ r.needsShopping }}" hint-placeholder-val="{{ false }}">
+                    <div style="background:#B33A1E;color:#FFFCF4;font-size:11.5px;font-weight:700;padding:5px 10px;border-radius:100px;white-space:nowrap;">+{{ r.toBuyCount }} خرید</div>
+                  </sc-if>
+                </div>
+                <div style="font-size:13.5px;color:#7A6B52;margin-top:6px;line-height:1.75;">{{ r.desc }}</div>
+                <div style="display:flex;gap:8px;margin-top:12px;">
+                  <div style="background:#EFE3CE;color:#5B4E38;font-size:12px;font-weight:600;padding:6px 10px;border-radius:10px;">{{ r.cost }}</div>
+                  <div style="background:#EFE3CE;color:#5B4E38;font-size:12px;font-weight:600;padding:6px 10px;border-radius:10px;">{{ r.time }}</div>
+                  <div style="background:#EFE3CE;color:#5B4E38;font-size:12px;font-weight:600;padding:6px 10px;border-radius:10px;">{{ r.difficulty }}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ===================== RECIPE DETAIL ===================== -->
+      <sc-if value="{{ isDetail }}" hint-placeholder-val="{{ false }}">
+        <div style="height:100%;display:flex;flex-direction:column;box-sizing:border-box;">
+          <div style="padding:20px;background:#4A5D23;border-radius:0 0 24px 24px;">
+            <div onClick="{{ back }}" style="width:36px;height:36px;border-radius:12px;background:rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;font-size:18px;color:#FFFCF4;cursor:pointer;margin-bottom:16px;">→</div>
+            <div style="font-size:21px;font-weight:800;color:#FFFCF4;">{{ selectedRecipe.title }}</div>
+            <div style="font-size:13px;color:#E1E8CF;margin-top:6px;line-height:1.7;">{{ selectedRecipe.desc }}</div>
+            <div style="display:flex;gap:8px;margin-top:14px;">
+              <div style="background:rgba(255,255,255,0.16);color:#FFFCF4;font-size:12px;font-weight:600;padding:6px 10px;border-radius:10px;">{{ selectedRecipe.cost }}</div>
+              <div style="background:rgba(255,255,255,0.16);color:#FFFCF4;font-size:12px;font-weight:600;padding:6px 10px;border-radius:10px;">{{ selectedRecipe.time }}</div>
+              <div style="background:rgba(255,255,255,0.16);color:#FFFCF4;font-size:12px;font-weight:600;padding:6px 10px;border-radius:10px;">{{ selectedRecipe.difficulty }}</div>
+            </div>
+          </div>
+
+          <div style="flex:1;overflow:auto;padding:18px 20px 24px;">
+            <div style="font-size:14px;font-weight:800;color:#4A5D23;margin-bottom:8px;">✓ از قفسه‌ات استفاده می‌شه</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+              <sc-for list="{{ selectedRecipe.fromPantry }}" as="ing" hint-placeholder-count="4">
+                <div style="background:#E1E8CF;color:#3C4C1B;font-size:13px;font-weight:600;padding:8px 12px;border-radius:100px;">{{ ing }}</div>
+              </sc-for>
+            </div>
+
+            <sc-if value="{{ selectedRecipe.needsShopping }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:14px;font-weight:800;color:#B33A1E;margin-bottom:8px;">🛒 باید بخری</div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+                <sc-for list="{{ selectedRecipe.toBuy }}" as="ing" hint-placeholder-count="1">
+                  <div style="background:#F6DDD3;color:#7A2C18;font-size:13px;font-weight:600;padding:8px 12px;border-radius:100px;">{{ ing }}</div>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <div style="font-size:14px;font-weight:800;color:#2B2118;margin:10px 0 10px;">مراحل پخت</div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <sc-for list="{{ selectedRecipe.steps }}" as="step" hint-placeholder-count="5">
+                <div style="display:flex;gap:12px;align-items:flex-start;">
+                  <div style="width:26px;height:26px;border-radius:100px;background:#D9A404;color:#2B2118;font-size:12.5px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">{{ step.n }}</div>
+                  <div style="font-size:14px;color:#3A2E1E;line-height:1.85;flex:1;">{{ step.text }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ===================== ERROR: EMPTY PANTRY ===================== -->
+      <sc-if value="{{ isErrorEmpty }}" hint-placeholder-val="{{ false }}">
+        <div style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:0 32px;text-align:center;box-sizing:border-box;">
+          <div style="width:64px;height:64px;border-radius:20px;background:#F6DDD3;display:flex;align-items:center;justify-content:center;font-size:28px;">🗄️</div>
+          <div style="font-size:17px;font-weight:800;color:#2B2118;">قفسه‌ت فعلاً خالیه</div>
+          <div style="font-size:13.5px;color:#7A6B52;line-height:1.85;max-width:250px;">برای اینکه بتونیم غذا پیشنهاد بدیم، اول باید بدونیم چی توی خونه داری</div>
+          <div onClick="{{ backToPantryAndAdd }}" style="margin-top:8px;height:50px;padding:0 24px;border-radius:15px;background:#4A5D23;color:#FFFCF4;font-size:14.5px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer;">برگرد و یه ماده اضافه کن</div>
+        </div>
+      </sc-if>
+
+      <!-- ===================== ERROR: SERVICE ===================== -->
+      <sc-if value="{{ isErrorService }}" hint-placeholder-val="{{ false }}">
+        <div style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:0 32px;text-align:center;box-sizing:border-box;">
+          <div style="width:64px;height:64px;border-radius:20px;background:#F6DDD3;display:flex;align-items:center;justify-content:center;font-size:28px;">⚠️</div>
+          <div style="font-size:17px;font-weight:800;color:#2B2118;">یه مشکلی پیش اومد</div>
+          <div style="font-size:13.5px;color:#7A6B52;line-height:1.85;max-width:250px;">سرویس پیشنهاد غذا الان جواب نداد. مشکل از قفسه‌ی تو نیست، یه بار دیگه امتحان کن</div>
+          <div onClick="{{ retryService }}" style="margin-top:8px;height:50px;padding:0 24px;border-radius:15px;background:#D9A404;color:#2B2118;font-size:14.5px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer;">تلاش دوباره</div>
+        </div>
+      </sc-if>
+
+    </div>
+  </x-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  SUGGESTIONS = ['پیاز', 'سیب‌زمینی', 'گوجه‌فرنگی', 'تخم‌مرغ', 'برنج', 'عدس', 'رب گوجه', 'سیر', 'سبزی معطر', 'ماست', 'نان', 'روغن', 'نمک و ادویه', 'مرغ', 'لپه', 'لوبیا'];
+
+  BUDGETS = [
+    { id: 'low', label: 'خیلی کم', desc: 'فقط با چیزی که الان توی قفسه‌ته' },
+    { id: 'mid', label: 'متوسط', desc: 'می‌تونی یکی دو تا ماده‌ی کوچیک هم بخری' },
+    { id: 'open', label: 'بدون محدودیت', desc: 'هر چی لازم باشه، بخر' },
+  ];
+
+  RECIPES = [
+    {
+      id: 'adasi', title: 'عدسی', desc: 'یه سوپ گرم و پرانرژی که با چهارتا ماده‌ی ساده حاضر می‌شه.',
+      cost: '۱۵–۲۵ هزار تومان', time: '۴۵ دقیقه', difficulty: 'آسان',
+      fromPantry: ['عدس', 'پیاز', 'سیر', 'رب گوجه'], toBuy: ['سبزی معطر'],
+      steps: [
+        'پیاز و سیر رو نگینی خرد کن و توی روغن تفت بده تا طلایی بشه.',
+        'عدس آبکش‌شده رو اضافه کن و یکی دو دقیقه با پیاز تفت بده.',
+        'رب گوجه رو اضافه کن و کمی تفت بده تا رنگش عوض بشه.',
+        'آب جوش، کمی نمک و زردچوبه بریز و روی حرارت ملایم ۳۰-۴۰ دقیقه بپز.',
+        'سبزی معطر خردشده رو ده دقیقه مونده به آخر اضافه کن.',
+        'داغ‌داغ با نون سرو کن.',
+      ],
+    },
+    {
+      id: 'kuku', title: 'کوکو سیب‌زمینی', desc: 'یه کوکوی ساده و خانگی که هم صبحونه‌س هم ناهار.',
+      cost: 'زیر ۱۵ هزار تومان', time: '۳۰ دقیقه', difficulty: 'آسان',
+      fromPantry: ['سیب‌زمینی', 'تخم‌مرغ', 'پیاز', 'نمک و ادویه'], toBuy: [],
+      steps: [
+        'سیب‌زمینی‌ها رو آب‌پز کن، پوستشون رو بگیر و رنده کن.',
+        'پیاز رو رنده کن و آبش رو بگیر.',
+        'تخم‌مرغ، پیاز و کمی نمک و زردچوبه رو به سیب‌زمینی اضافه کن و خوب مخلوط کن.',
+        'توی ماهیتابه‌ی روغن‌داغ به شکل کوچیک بریز.',
+        'دو طرفش رو سرخ کن تا طلایی بشه.',
+      ],
+    },
+    {
+      id: 'eshkeneh', title: 'اشکنه گوجه‌فرنگی', desc: 'یه خورش سریع و ترش‌وشیرین با گوجه و تخم‌مرغ.',
+      cost: '۱۰–۲۰ هزار تومان', time: '۲۵ دقیقه', difficulty: 'خیلی آسان',
+      fromPantry: ['گوجه‌فرنگی', 'پیاز', 'تخم‌مرغ', 'رب گوجه'], toBuy: ['آبغوره یا آبلیمو'],
+      steps: [
+        'پیاز رو خلالی خرد کن و سرخ کن تا نرم بشه.',
+        'گوجه‌فرنگی خردشده و رب رو اضافه کن و تفت بده.',
+        'آب و کمی زردچوبه اضافه کن و بذار ۱۰ دقیقه بجوشه.',
+        'آبغوره رو اضافه کن.',
+        'تخم‌مرغ‌ها رو بشکن روش و بذار تا ببنده.',
+      ],
+    },
+  ];
+
+  state = {
+    screen: 'login',
+    history: [],
+    pantryItems: [],
+    addSheetOpen: false,
+    demoMenuOpen: false,
+    query: '',
+    budget: null,
+    selectedRecipeId: null,
+  };
+
+  go = (screen) => this.setState(s => ({ history: [...s.history, s.screen], screen }));
+
+  back = () => this.setState(s => {
+    if (!s.history.length) return null;
+    const h = [...s.history];
+    const prev = h.pop();
+    return { history: h, screen: prev };
+  });
+
+  setQuery = (v) => this.setState({ query: v });
+
+  addItem = (nameRaw) => {
+    const name = (nameRaw !== undefined ? nameRaw : this.state.query).trim();
+    if (!name) return;
+    this.setState(s => s.pantryItems.includes(name)
+      ? { query: '' }
+      : { pantryItems: [...s.pantryItems, name], query: '' });
+  };
+
+  removeItem = (idx) => this.setState(s => ({ pantryItems: s.pantryItems.filter((_, i) => i !== idx) }));
+
+  openAddSheet = () => this.setState({ addSheetOpen: true, query: '' });
+  closeAddSheet = () => this.setState({ addSheetOpen: false, query: '' });
+  toggleDemoMenu = () => this.setState(s => ({ demoMenuOpen: !s.demoMenuOpen }));
+
+  addSampleItems = () => this.setState({
+    pantryItems: ['پیاز', 'سیب‌زمینی', 'تخم‌مرغ', 'گوجه‌فرنگی', 'عدس', 'رب گوجه', 'سیر'],
+    demoMenuOpen: false,
+  });
+
+  findFood = () => {
+    if (this.state.pantryItems.length === 0) this.go('errorEmpty');
+    else this.go('budget');
+  };
+
+  selectBudget = (id) => this.setState({ budget: id });
+
+  runLoading = () => {
+    clearTimeout(this._t);
+    this.go('loading');
+    this._t = setTimeout(() => this.go('results'), 2200);
+  };
+
+  continueToLoading = () => { if (this.state.budget) this.runLoading(); };
+  previewLoading = () => { this.setState({ demoMenuOpen: false }); this.runLoading(); };
+  previewErrorEmpty = () => { this.setState({ demoMenuOpen: false }); this.go('errorEmpty'); };
+  previewErrorService = () => { this.setState({ demoMenuOpen: false }); this.go('errorService'); };
+  retryService = () => this.runLoading();
+
+  backToPantryAndAdd = () => this.setState({ screen: 'pantry', addSheetOpen: true, history: [] });
+
+  openRecipe = (id) => { this.setState({ selectedRecipeId: id }); this.go('detail'); };
+
+  componentWillUnmount() { clearTimeout(this._t); }
+
+  renderVals() {
+    const s = this.state;
+    const jarColors = ['#D9A404', '#B33A1E', '#4A5D23'];
+    const jarCount = 7;
+    const jarSlots = Array.from({ length: jarCount }).map((_, i) => ({
+      filled: i < Math.min(s.pantryItems.length, jarCount),
+      color: jarColors[i % 3],
+    }));
+
+    const filteredSuggestions = this.SUGGESTIONS
+      .filter(x => !s.pantryItems.includes(x))
+      .filter(x => !s.query.trim() || x.includes(s.query.trim()))
+      .slice(0, 8)
+      .map(name => ({ name, add: () => this.addItem(name) }));
+
+    const selectedRecipe = this.RECIPES.find(r => r.id === s.selectedRecipeId) || this.RECIPES[0];
+    const selectedRecipeVals = {
+      ...selectedRecipe,
+      needsShopping: selectedRecipe.toBuy.length > 0,
+      steps: selectedRecipe.steps.map((text, i) => ({ n: i + 1, text })),
+    };
+
+    return {
+      isLogin: s.screen === 'login',
+      isPantry: s.screen === 'pantry',
+      isBudget: s.screen === 'budget',
+      isLoading: s.screen === 'loading',
+      isResults: s.screen === 'results',
+      isDetail: s.screen === 'detail',
+      isErrorEmpty: s.screen === 'errorEmpty',
+      isErrorService: s.screen === 'errorService',
+      addSheetOpen: s.addSheetOpen,
+      demoMenuOpen: s.demoMenuOpen,
+      query: s.query,
+      onQueryChange: (e) => this.setQuery(e.target.value),
+      filteredSuggestions,
+      pantryItems: s.pantryItems.map((name, i) => ({ name, remove: () => this.removeItem(i) })),
+      pantryEmpty: s.pantryItems.length === 0,
+      jarSlots,
+      budgets: this.BUDGETS.map(b => ({ ...b, selected: s.budget === b.id, select: () => this.selectBudget(b.id) })),
+      continueEnabled: !!s.budget,
+      recipes: this.RECIPES.map(r => ({
+        ...r,
+        needsShopping: r.toBuy.length > 0,
+        toBuyCount: r.toBuy.length,
+        open: () => this.openRecipe(r.id),
+      })),
+      selectedRecipe: selectedRecipeVals,
+      goLogin: () => this.setState({ screen: 'pantry' }),
+      back: this.back,
+      openAddSheet: this.openAddSheet,
+      closeAddSheet: this.closeAddSheet,
+      addItemFromInput: () => this.addItem(),
+      removeItem: this.removeItem,
+      toggleDemoMenu: this.toggleDemoMenu,
+      addSampleItems: this.addSampleItems,
+      findFood: this.findFood,
+      continueToLoading: this.continueToLoading,
+      previewLoading: this.previewLoading,
+      previewErrorEmpty: this.previewErrorEmpty,
+      previewErrorService: this.previewErrorService,
+      retryService: this.retryService,
+      backToPantryAndAdd: this.backToPantryAndAdd,
+      openRecipe: this.openRecipe,
+    };
+  }
+}
+
+</script>
+</body>
+</html>
