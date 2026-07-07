@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/demo/demo_auth_repository.dart';
+import '../../../../core/demo/demo_mode.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/primary_button.dart';
 import '../../../pantry/presentation/pages/pantry_page.dart';
@@ -19,7 +21,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  late final AuthRepository _authRepository = widget.authRepository ?? AuthRepository();
+  late final AuthRepository _authRepository =
+      widget.authRepository ?? (isDemoMode ? DemoAuthRepository() : AuthRepository());
   final _identifierController = TextEditingController();
   final _passwordController = TextEditingController();
 

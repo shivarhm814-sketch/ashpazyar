@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/demo/demo_mode.dart';
+import '../../../../core/demo/demo_recipe_repository.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../data/models/budget_tier.dart';
 import '../../data/recipe_repository.dart';
@@ -29,7 +31,8 @@ class RecipeLoadingPage extends StatefulWidget {
 }
 
 class _RecipeLoadingPageState extends State<RecipeLoadingPage> {
-  late final RecipeRepository _recipeRepository = widget.recipeRepository ?? RecipeRepository();
+  late final RecipeRepository _recipeRepository =
+      widget.recipeRepository ?? (isDemoMode ? DemoRecipeRepository() : RecipeRepository());
 
   @override
   void initState() {

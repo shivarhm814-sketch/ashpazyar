@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'core/demo/demo_auth_repository.dart';
+import 'core/demo/demo_mode.dart';
 import 'core/theme/app_theme.dart';
 import 'features/auth/data/auth_repository.dart';
 import 'features/auth/presentation/pages/login_page.dart';
@@ -43,7 +45,7 @@ class _SessionGate extends StatefulWidget {
 }
 
 class _SessionGateState extends State<_SessionGate> {
-  final _authRepository = AuthRepository();
+  final _authRepository = isDemoMode ? DemoAuthRepository() : AuthRepository();
   late final Future<bool> _hasSession = _authRepository.hasSession();
 
   @override

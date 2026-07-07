@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/demo/demo_auth_repository.dart';
+import '../../../../core/demo/demo_mode.dart';
+import '../../../../core/demo/demo_pantry_repository.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../auth/data/auth_repository.dart';
 import '../../../auth/presentation/pages/login_page.dart';
@@ -32,8 +35,10 @@ class PantryPage extends StatefulWidget {
 }
 
 class _PantryPageState extends State<PantryPage> {
-  late final PantryRepository _pantryRepository = widget.pantryRepository ?? PantryRepository();
-  late final AuthRepository _authRepository = widget.authRepository ?? AuthRepository();
+  late final PantryRepository _pantryRepository =
+      widget.pantryRepository ?? (isDemoMode ? DemoPantryRepository() : PantryRepository());
+  late final AuthRepository _authRepository =
+      widget.authRepository ?? (isDemoMode ? DemoAuthRepository() : AuthRepository());
 
   List<PantryItem> _items = const [];
   bool _loading = true;
