@@ -53,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
       );
     } catch (_) {
       if (!mounted) return;
-      setState(() => _error = 'ورود انجام نشد. ایمیل/شماره یا رمز عبور را بررسی کن.');
+      setState(() => _error = 'ورود انجام نشد. شماره موبایل یا رمز عبور را بررسی کن.');
     } finally {
       if (mounted) setState(() => _submitting = false);
     }
@@ -65,16 +65,24 @@ class _LoginPageState extends State<LoginPage> {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         backgroundColor: AppColors.appBackground,
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 28),
-            child: Column(
-              children: [
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const AshpazyarLogoMark(),
+        body: Stack(
+          children: [
+            // subtle floating ingredients — decorative only, kept small and
+            // low-opacity along the bottom edge so it doesn't compete with
+            // the login form above it.
+            const Positioned(bottom: 96, right: 8, child: _FloatingFood(emoji: '🍅', size: 34, angle: -0.18)),
+            const Positioned(bottom: 150, left: 4, child: _FloatingFood(emoji: '🥕', size: 30, angle: 0.16)),
+            const Positioned(bottom: 40, left: 56, child: _FloatingFood(emoji: '🥚', size: 26, angle: 0.1)),
+            SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 28),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                      const AshpazyarLogoMark(size: 124),
                       const SizedBox(height: 18),
                       const AshpazyarWordmark(),
                       const SizedBox(height: 18),
@@ -92,10 +100,10 @@ class _LoginPageState extends State<LoginPage> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       AuthTextField(
-                        label: 'ایمیل یا شماره موبایل',
+                        label: 'شماره موبایل',
                         controller: _identifierController,
                         hint: 'مثلا 0912xxxxxxx',
-                        keyboardType: TextInputType.emailAddress,
+                        keyboardType: TextInputType.phone,
                       ),
                       const SizedBox(height: 14),
                       AuthTextField(
@@ -110,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                       const SizedBox(height: 6),
                       PrimaryButton(
-                        label: _submitting ? 'در حال ورود...' : 'ورود',
+                        label: _submitting ? 'در حال ورود...' : 'ورود به آشپزیار',
                         onPressed: _submitting ? null : _submit,
                         enabled: !_submitting,
                         fontWeight: FontWeight.w700,
@@ -146,6 +154,31 @@ class _LoginPageState extends State<LoginPage> {
               ],
             ),
           ),
+        ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// A small, low-opacity rotated food emoji used as decorative texture near
+/// the bottom of the Login screen — purely visual, never intercepts taps.
+class _FloatingFood extends StatelessWidget {
+  const _FloatingFood({required this.emoji, required this.size, required this.angle});
+
+  final String emoji;
+  final double size;
+  final double angle;
+
+  @override
+  Widget build(BuildContext context) {
+    return IgnorePointer(
+      child: Transform.rotate(
+        angle: angle,
+        child: Opacity(
+          opacity: 0.16,
+          child: Text(emoji, style: TextStyle(fontSize: size)),
         ),
       ),
     );

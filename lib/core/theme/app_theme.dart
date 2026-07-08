@@ -20,7 +20,7 @@ class AppColors {
   static const chipBackground = Color(0xFFFBEAE0);
   static const chipText = Color(0xFF8C6F5D);
 
-  static const turmeric = Color(0xFFFF8A3D);
+  static const turmeric = Color(0xFFF97316);
   static const turmericLight = Color(0xFFFFA35C);
 
   static const tomato = Color(0xFFE85D3F);
