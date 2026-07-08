@@ -56,7 +56,7 @@ class DemoRecipeRepository extends RecipeRepository {
     }
 
     if (matches.isEmpty) {
-      return const RecipeSuggestResult.failure(RecipeSuggestFailureReason.emptyPantry);
+      return const RecipeSuggestResult.failure(RecipeSuggestFailureReason.noMatch);
     }
     return RecipeSuggestResult.success(matches);
   }

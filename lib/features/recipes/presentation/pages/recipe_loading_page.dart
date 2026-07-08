@@ -6,6 +6,7 @@ import '../../../../core/theme/app_theme.dart';
 import '../../data/models/budget_tier.dart';
 import '../../data/recipe_repository.dart';
 import 'recipe_error_empty_pantry_page.dart';
+import 'recipe_error_no_match_page.dart';
 import 'recipe_error_service_page.dart';
 import 'recipe_results_page.dart';
 
@@ -58,6 +59,11 @@ class _RecipeLoadingPageState extends State<RecipeLoadingPage> {
       case RecipeSuggestFailureReason.emptyPantry:
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (_) => const RecipeErrorEmptyPantryPage()),
+        );
+        break;
+      case RecipeSuggestFailureReason.noMatch:
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (_) => const RecipeErrorNoMatchPage()),
         );
         break;
       case RecipeSuggestFailureReason.serviceFailure:
