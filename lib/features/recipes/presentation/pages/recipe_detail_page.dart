@@ -47,16 +47,11 @@ class RecipeDetailPage extends StatelessWidget {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(16),
-                      child: SizedBox(
+                      child: Container(
                         height: 160,
                         width: double.infinity,
-                        child: recipe.imageUrl != null
-                            ? Image.network(
-                                recipe.imageUrl!,
-                                fit: BoxFit.cover,
-                                errorBuilder: (context, error, stackTrace) => _RecipeGlyphBanner(recipe: recipe),
-                              )
-                            : _RecipeGlyphBanner(recipe: recipe),
+                        color: Colors.white.withValues(alpha: 0.14),
+                        child: RecipeThumb(recipe: recipe, iconSize: 56),
                       ),
                     ),
                     const SizedBox(height: 14),
@@ -218,24 +213,6 @@ class RecipeDetailPage extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-/// Shown in place of a real photo when [Recipe.imageUrl] isn't set (no
-/// photography/image-generation is available) — a large glyph on a soft
-/// tint so the header still reads as a "dish photo" slot.
-class _RecipeGlyphBanner extends StatelessWidget {
-  const _RecipeGlyphBanner({required this.recipe});
-
-  final Recipe recipe;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white.withValues(alpha: 0.14),
-      alignment: Alignment.center,
-      child: Text(dishGlyph(recipe.title, recipe.category), style: const TextStyle(fontSize: 56)),
     );
   }
 }

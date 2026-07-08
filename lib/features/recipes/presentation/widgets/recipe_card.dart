@@ -33,12 +33,14 @@ class RecipeCard extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(color: AppColors.chipBackground, borderRadius: BorderRadius.circular(12)),
-                    alignment: Alignment.center,
-                    child: Text(dishGlyph(recipe.title, recipe.category), style: const TextStyle(fontSize: 20)),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      color: AppColors.chipBackground,
+                      child: RecipeThumb(recipe: recipe, iconSize: 20),
+                    ),
                   ),
                   const SizedBox(width: 10),
                   Expanded(child: Text(recipe.title, style: AppText.cardTitle())),

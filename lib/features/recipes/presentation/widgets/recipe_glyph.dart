@@ -1,3 +1,43 @@
+import 'package:flutter/material.dart';
+
+import '../../data/models/recipe.dart';
+import '../../data/recipe_image_slugs.dart';
+
+/// A recipe's visual: a real photo from assets/recipe_images/ if one has
+/// been dropped in for this title (see that folder's README), otherwise a
+/// representative emoji glyph. [fit]/[iconSize] let callers size this for
+/// either the small results-list tile or the large detail-page banner.
+class RecipeThumb extends StatelessWidget {
+  const RecipeThumb({super.key, required this.recipe, this.iconSize = 20});
+
+  final Recipe recipe;
+  final double iconSize;
+
+  @override
+  Widget build(BuildContext context) {
+    final slug = recipeImageSlugs[recipe.title];
+    if (slug == null) return _glyph();
+    return Image.asset(
+      '$recipeImageAssetDir/$slug.jpg',
+      fit: BoxFit.cover,
+      errorBuilder: (context, error, stackTrace) => Image.asset(
+        '$recipeImageAssetDir/$slug.png',
+        fit: BoxFit.cover,
+        errorBuilder: (context, error, stackTrace) => _glyph(),
+      ),
+    );
+  }
+
+  Widget _glyph() {
+    return ColoredBox(
+      color: Colors.transparent,
+      child: Center(
+        child: Text(dishGlyph(recipe.title, recipe.category), style: TextStyle(fontSize: iconSize)),
+      ),
+    );
+  }
+}
+
 /// Maps a recipe title (and, as a fallback, its category) to a
 /// representative food emoji — used as a lightweight stand-in wherever a
 /// real photo (`Recipe.imageUrl`) isn't available yet. No photography or
