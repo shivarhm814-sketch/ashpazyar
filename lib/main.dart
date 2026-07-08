@@ -29,7 +29,21 @@ class AshpazyarApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      builder: (context, child) => Directionality(textDirection: TextDirection.rtl, child: child!),
+      builder: (context, child) => Directionality(
+        textDirection: TextDirection.rtl,
+        // Mobile-first layout: on a wide (desktop browser) viewport, letterbox
+        // the app at a phone-like max width instead of stretching every
+        // screen's fixed mobile layout across the full window.
+        child: ColoredBox(
+          color: AppColors.pageBackground,
+          child: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 480),
+              child: child,
+            ),
+          ),
+        ),
+      ),
       home: const _SessionGate(),
     );
   }

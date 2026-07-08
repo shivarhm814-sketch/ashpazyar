@@ -41,17 +41,10 @@ const demoIngredientCatalog = <String>[
   'ماست یونانی', 'خامه ترش', 'سرکه', 'روغن زیتون', 'روغن کنجد', 'آبغوره', 'گلاب',
 ];
 
-/// Stands in for [PantryRepository] in the offline demo build: keeps a
-/// small in-memory pantry seeded with a few items so "پیدا کن غذا" has
-/// something to work with right away.
+/// Stands in for [PantryRepository] in the offline demo build: starts with
+/// an empty in-memory pantry, same as a brand-new real account would.
 class DemoPantryRepository extends PantryRepository {
-  final List<PantryItem> _items = [
-    const PantryItem(id: 'd1', name: 'سیب‌زمینی'),
-    const PantryItem(id: 'd2', name: 'تخم‌مرغ'),
-    const PantryItem(id: 'd3', name: 'پیاز'),
-    const PantryItem(id: 'd4', name: 'مرغ'),
-    const PantryItem(id: 'd5', name: 'برنج'),
-  ];
+  final List<PantryItem> _items = [];
   int _counter = 100;
 
   @override
