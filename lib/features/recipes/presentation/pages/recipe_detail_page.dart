@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_theme.dart';
 import '../../data/models/recipe.dart';
+import '../widgets/recipe_glyph.dart';
 
 /// Olive-colored header block (back + title + desc + meta badges) followed
 /// by category/nutrition info, from-pantry / to-buy ingredient chips, and
@@ -44,20 +45,20 @@ class RecipeDetailPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    if (recipe.imageUrl != null) ...[
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
-                        child: AspectRatio(
-                          aspectRatio: 16 / 9,
-                          child: Image.network(
-                            recipe.imageUrl!,
-                            fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) => Container(color: AppColors.oliveTextOnSoft),
-                          ),
-                        ),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: AspectRatio(
+                        aspectRatio: 16 / 9,
+                        child: recipe.imageUrl != null
+                            ? Image.network(
+                                recipe.imageUrl!,
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) => _RecipeGlyphBanner(recipe: recipe),
+                              )
+                            : _RecipeGlyphBanner(recipe: recipe),
                       ),
-                      const SizedBox(height: 14),
-                    ],
+                    ),
+                    const SizedBox(height: 14),
                     Align(
                       alignment: Alignment.centerRight,
                       child: Material(
@@ -216,6 +217,24 @@ class RecipeDetailPage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+/// Shown in place of a real photo when [Recipe.imageUrl] isn't set (no
+/// photography/image-generation is available) — a large glyph on a soft
+/// tint so the header still reads as a "dish photo" slot.
+class _RecipeGlyphBanner extends StatelessWidget {
+  const _RecipeGlyphBanner({required this.recipe});
+
+  final Recipe recipe;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.white.withValues(alpha: 0.14),
+      alignment: Alignment.center,
+      child: Text(dishGlyph(recipe.title, recipe.category), style: const TextStyle(fontSize: 56)),
     );
   }
 }

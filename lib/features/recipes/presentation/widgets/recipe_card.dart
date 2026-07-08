@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_theme.dart';
 import '../../data/models/recipe.dart';
+import 'recipe_glyph.dart';
 
 /// A single suggestion on the Results screen: title (+ orange "+N خرید"
 /// badge only when shopping is needed), description, and 3 neutral meta
@@ -32,6 +33,14 @@ class RecipeCard extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(color: AppColors.chipBackground, borderRadius: BorderRadius.circular(12)),
+                    alignment: Alignment.center,
+                    child: Text(dishGlyph(recipe.title, recipe.category), style: const TextStyle(fontSize: 20)),
+                  ),
+                  const SizedBox(width: 10),
                   Expanded(child: Text(recipe.title, style: AppText.cardTitle())),
                   if (recipe.needsShopping) ...[
                     const SizedBox(width: 10),
