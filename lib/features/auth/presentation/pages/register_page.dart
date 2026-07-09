@@ -85,10 +85,10 @@ class _RegisterPageState extends State<RegisterPage> {
                     AuthTextField(label: 'نام', controller: _nameController, hint: 'مثلا: سارا'),
                     const SizedBox(height: 14),
                     AuthTextField(
-                      label: 'ایمیل یا شماره موبایل',
+                      label: 'شماره موبایل',
                       controller: _identifierController,
                       hint: 'مثلا 0912xxxxxxx',
-                      keyboardType: TextInputType.emailAddress,
+                      keyboardType: TextInputType.phone,
                     ),
                     const SizedBox(height: 14),
                     AuthTextField(

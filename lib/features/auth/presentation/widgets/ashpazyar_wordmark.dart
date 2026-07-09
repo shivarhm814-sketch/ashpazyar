@@ -18,36 +18,17 @@ class AshpazyarWordmark extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         SizedBox(
-          width: 32 * s,
+          width: 22 * s,
           height: 38 * s,
           child: Stack(
             clipBehavior: Clip.none,
             children: [
-              // spoon
+              // fork (now on the left)
               Positioned(
                 left: 0,
                 top: 0,
                 child: Transform.rotate(
                   angle: 22 * 3.1415926535 / 180,
-                  alignment: Alignment.topCenter,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Container(width: 11 * s, height: 14 * s, decoration: const BoxDecoration(color: AppColors.tomato, shape: BoxShape.circle)),
-                      Transform.translate(
-                        offset: Offset(0, -2 * s),
-                        child: Container(width: 4 * s, height: 20 * s, decoration: BoxDecoration(color: AppColors.tomato, borderRadius: BorderRadius.circular(2 * s))),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              // fork
-              Positioned(
-                right: 0,
-                top: 0,
-                child: Transform.rotate(
-                  angle: -22 * 3.1415926535 / 180,
                   alignment: Alignment.topCenter,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -65,6 +46,25 @@ class AshpazyarWordmark extends StatelessWidget {
                       Transform.translate(
                         offset: Offset(0, -1 * s),
                         child: Container(width: 4 * s, height: 20 * s, decoration: BoxDecoration(color: AppColors.turmeric, borderRadius: BorderRadius.circular(2 * s))),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              // spoon (now on the right)
+              Positioned(
+                right: 0,
+                top: 0,
+                child: Transform.rotate(
+                  angle: -22 * 3.1415926535 / 180,
+                  alignment: Alignment.topCenter,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(width: 11 * s, height: 14 * s, decoration: const BoxDecoration(color: AppColors.tomato, shape: BoxShape.circle)),
+                      Transform.translate(
+                        offset: Offset(0, -2 * s),
+                        child: Container(width: 4 * s, height: 20 * s, decoration: BoxDecoration(color: AppColors.tomato, borderRadius: BorderRadius.circular(2 * s))),
                       ),
                     ],
                   ),
